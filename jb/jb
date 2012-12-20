@@ -1,0 +1,7 @@
+#!/usr/bin/python 
+# Beautify json 
+# todo: add options, and io to/from files
+# bugs: sort keys does not work correctly, always sorts 
+import json, sys
+obj = json.load(sys.stdin)
+sys.stdout.write(json.dumps(obj, sort_keys=False, indent=4, separators=(',', ': ')))
