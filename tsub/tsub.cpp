@@ -1,3 +1,8 @@
+/**
+ * author: vpathak
+ * licence : apache 2; see http://www.apache.org/licenses/LICENSE-2.0.html
+ */
+
 #include <ctype.h>
 #include <stdio.h>
 #include <iostream>
