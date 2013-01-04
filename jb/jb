@@ -2,6 +2,8 @@
 # Beautify json 
 # todo: add options, and io to/from files
 # bugs: sort keys does not work correctly, always sorts 
+# author: vpathak
+# licence : apache 2; see http://www.apache.org/licenses/LICENSE-2.0.html
 import json, sys
 obj = json.load(sys.stdin)
 sys.stdout.write(json.dumps(obj, sort_keys=False, indent=4, separators=(',', ': ')))
