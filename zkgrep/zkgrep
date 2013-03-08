@@ -1,3 +1,21 @@
 #!/bin/bash
-java -cp libs/log4j-1.2.15.jar:libs/zookeeper-3.3.3.jar:. ZkGrep $1
+
+SERVER=localhost
+ 
+while getopts ":s:" opt
+do
+    case $opt in 
+        s)  SERVER=$OPTARG
+            shift 2
+            ;;
+        h) echo "h was triggered" 
+            ;;
+        \?) echo "Invalid option: -$OPTARG"
+            ;;
+    esac
+done
+          
+#echo $@
+
+java -cp libs/log4j-1.2.15.jar:libs/zookeeper-3.3.3.jar:. ZkGrep $SERVER $@
 
