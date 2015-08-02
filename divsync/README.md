@@ -1,8 +1,14 @@
 
+A tool to sync html blocks in different files
+
 # Copy a div from src to target 
 
 To preprocess and make uniform the html prior to publishing. 
 
+Could be thought like SSI except it is done statically instead of dynamically 
+
+Could be included as part of a toolchain target to grab common html code from a template and to 
+populate it with manual oversight  
 
 # Example with output 
 
