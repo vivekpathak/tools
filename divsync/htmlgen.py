@@ -68,7 +68,7 @@ class HTMLCompiler:
             #if s.name == 'link' and s.has_attr('rel') and s['rel'] == 'stylesheet' and s.has_attr('href') and s['href'][0:4] != 'http' :
             elif s.name == 'link' and s.has_attr('href') and s['href'][0:4] != 'http' :
                 styles.append(self._inline_minify_styles_from_src(self.basepath + "/" + s['href']))
-                del s
+                s.extract()
             elif s.name == 'style' :
                  innerStyleTag = s
                  styles.append( s.string )
