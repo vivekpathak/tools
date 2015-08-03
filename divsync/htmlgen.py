@@ -39,7 +39,7 @@ class HTMLCompiler:
     def _replace_scripts(self) :
         for s in self.soup.find_all('script'):
 
-            if s.has_attr('src') and s['src'][0:4] != 'http' :    # local script with src directive 
+            if s.has_attr('src') and s['src'][0:4] != 'http' and s['src'][0:2] != '//' :    # local script with src directive 
                 s.string = self._inline_minify_script_from_src(self.basepath + "/" + s['src'])
                 del s['src']
                 
@@ -66,7 +66,7 @@ class HTMLCompiler:
             if not s.name:
                 pass
             #if s.name == 'link' and s.has_attr('rel') and s['rel'] == 'stylesheet' and s.has_attr('href') and s['href'][0:4] != 'http' :
-            elif s.name == 'link' and s.has_attr('href') and s['href'][0:4] != 'http' :
+            elif s.name == 'link' and s.has_attr('href') and s['href'][0:4] != 'http'  and s['href'][0:2] != '//':
                 styles.append(self._inline_minify_styles_from_src(self.basepath + "/" + s['href']))
                 s.extract()
             elif s.name == 'style' :
