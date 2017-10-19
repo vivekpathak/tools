@@ -4,9 +4,14 @@ from HTMLParser import HTMLParser
 import tempfile
 import os
 
+
+IGNORE_TAGS = [ 'img' ]
+
+    
 # create a subclass and override the handler methods
 class HTMLTagParser(HTMLParser):
 
+    
     def __init__(self, tagid, filename) :
         HTMLParser.__init__(self)
         self.filename = filename 
@@ -20,6 +25,10 @@ class HTMLTagParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         #print "Encountered a start tag:", tag
         #print "attrs:" , attrs
+        if tag in IGNORE_TAGS:
+            print 'ignore start of ' , tag
+            return
+        
         for (attrname, attrvalue) in attrs :
             if attrname == 'id' and attrvalue == self.tagid:
                 #print 'found required tag ' , tag , attrs
@@ -33,6 +42,10 @@ class HTMLTagParser(HTMLParser):
             
 
     def handle_endtag(self, tag):
+        if tag in IGNORE_TAGS:
+            print 'ignore end of ' , tag
+            return
+        
         #print "Encountered an end tag :", tag
         if self.inMatch:        
             x = self.tagstack.pop()
