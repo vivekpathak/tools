@@ -1,4 +1,4 @@
-#!/usr/in/env python
+#!/usr/bin/env python
 """
 run command once idleness exceeds that provided 
 """
@@ -13,6 +13,7 @@ s = 0
 while True:
     idlemillis = int(subprocess.check_output("xprintidle")) 
     print(idlemillis)
+    subprocess.check_call("date", shell=True)
     time.sleep(15)
     s += 1
     if s > SKIP_TRIES and idlemillis > MAX_SECONDS*1000 :
@@ -23,6 +24,3 @@ while True:
             s = 0
             thread.sleep(30)
             pass
-
-
-
