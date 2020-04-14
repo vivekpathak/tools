@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """
-run command once idleness exceeds that provided 
+suspend computer once idle exceeds 
+vivek pathak
 """
 import sys
 import time
