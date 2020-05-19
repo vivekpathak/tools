@@ -1,13 +1,16 @@
-#!/usr/bin/env python
 """
-suspend computer once idle exceeds 
-vivek pathak
+suspend computer once idle exceeds MAX_SECONDS from xprintidle (tested on ubuntu)
+author : vivek pathak
+
+usage:
+    python suspend.py
+
 """
 import sys
 import time
 import subprocess
 
-SKIP_TRIES = 3
+SKIP_TRIES = 5
 MAX_SECONDS = 10*60 if len(sys.argv) == 1 else int(sys.argv[1])
 print("timeout %d seconds" % MAX_SECONDS)
 s = 0
@@ -22,6 +25,7 @@ while True:
         try:
             subprocess.check_call("systemctl suspend", shell=True)
         except:
-            s = 0
+            # awakened!
             thread.sleep(30)
-            pass
+        finally:
+            s = 0
