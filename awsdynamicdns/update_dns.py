@@ -1,4 +1,4 @@
-
+import logging
 import boto3
 import json
 import pickle
@@ -7,6 +7,8 @@ import sys
 
 
 SERIALIZE_FILE = '/tmp/ipaddress.pkl'
+FORMAT = '%(asctime)-15s %(levelname)s %(message)s'
+logging.basicConfig(format=FORMAT, filename='/tmp/dns.log',level=logging.INFO)
 
 
 def get_public_ip():
@@ -19,12 +21,14 @@ def get_old_ip():
         ipstr = pickle.load(open(SERIALIZE_FILE, 'rb'))
         return ipstr
     except:
-        print("did not find saved ip")
+        logging.exception("did not find saved ip")
         return None
 
 
 def save_new_ip(ipstr):
+    logging.info("write the ip to pickle file")
     pickle.dump(ipstr, open(SERIALIZE_FILE, 'wb'))
+    logging.info("done writing the ip to pickle file")
 
 
 def update_dns(domain_name, ipstr):
@@ -32,7 +36,7 @@ def update_dns(domain_name, ipstr):
     for zone in client.list_hosted_zones()['HostedZones']:
         if zone["Name"].startswith(domain_name):
             zone_id = zone['Id']
-            print("about to change", zone_id, ipstr)
+            logging.info("about to change %s %s", zone_id, ipstr)
             #zone_info = client.get_hosted_zone(Id=zone_id)
             #print(zone_info)
             #sets = client.list_resource_record_sets(HostedZoneId=zone_id)
@@ -64,11 +68,11 @@ def update_dns(domain_name, ipstr):
 
 if __name__ == "__main__":
     ipstr = get_public_ip()
-    print("got public ip ", ipstr)
+    logging.info("got public ip %s", ipstr)
 
     if ipstr != get_old_ip():
          update_dns("orgmeta.com", ipstr)
          save_new_ip(ipstr)
 
     else:
-        print("nothing to do")
+        logging.info("nothing to do")
