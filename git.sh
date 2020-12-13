@@ -2,9 +2,10 @@
 pushd ~
 
 for dir in newlibertie/benchmarks newlibertie/docs newlibertie/web \
-	newlibertie/server \
-           clowdsource/cs-cui clowdsource/cs-db clowdsource/cs-rui clowdsource/cs-svc clowdsource/cs-admin
-           # TODO pubcode/jfi pubcode/casters pubcode/tools pubcode/authrep \#newlibertie/client \ newlibertie/db newlibertie/voting-protocol \
+	newlibertie/server newlibertie/voting-protocol \
+        clowdsource/cs-cui clowdsource/cs-db clowdsource/cs-rui clowdsource/cs-svc clowdsource/cs-admin \
+        pub/psychic-eureka \
+	pub/tools # TODO  newlibertie/db newlibertie/client pubcode/casters pubcode/authrep \
 do 
 	if ! pushd $dir ; then
 		echo exiting because of error at directory $dir
