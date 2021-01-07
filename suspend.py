@@ -21,6 +21,9 @@ while True:
     time.sleep(15)
     s += 1
     if s > SKIP_TRIES and idlemillis > MAX_SECONDS*1000 :
+
+        subprocess.check_call("mate-screensaver-command --lock", shell=True)
+
         print("suspend now")
         try:
             subprocess.check_call("systemctl suspend", shell=True)
