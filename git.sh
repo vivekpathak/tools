@@ -10,8 +10,8 @@ for dir in newlibertie/benchmarks newlibertie/db newlibertie/docs \
 	pub/tools newlibertie/client pub/casters pub/authrep
 do 
 	if ! pushd $dir ; then
-		echo exiting because of error at directory $dir
-		exit 
+		echo error at directory $dir - please fix
+		continue
 	fi
 
 	#echo Working on $(pwd)
