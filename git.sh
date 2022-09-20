@@ -1,5 +1,8 @@
 #!/bin/bash 
+
+
 pushd ~
+
 
 for dir in newlibertie/benchmarks newlibertie/db newlibertie/docs \
 				  newlibertie/web \
@@ -14,8 +17,18 @@ do
 		continue
 	fi
 
+    # if ! git diff --quiet ; then
+    #     echo Dirty : $dir .... skipping
+    # else
+    #     if ! git pull ; then
+	# 	    echo Conflict on pull for $dir .... reverting 
+	# 	    git merge --abort
+    #     else
+	# 	    echo $dir is updated
+    #     fi
 	#echo Working on $(pwd)
-	if ! git diff --quiet ; then 
+
+    if ! git diff --quiet ; then 
 		echo Dirty : $dir .... skipping
 	else
 	    if ! git pull ; then
