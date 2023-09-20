@@ -1,13 +1,10 @@
 #!/bin/bash 
 pushd ~
 
-for dir in newlibertie/benchmarks newlibertie/db newlibertie/docs \
-				  newlibertie/web \
-	newlibertie/server newlibertie/voting-protocol \
-        clowdsource/cs-cui clowdsource/cs-db clowdsource/cs-rui \
-	clowdsource/cs-svc clowdsource/cs-admin \
-        pub/psychic-eureka \
-	pub/tools newlibertie/client pub/casters pub/authrep
+for dir in 1power/psychic-eureka 1power/vigilant-lamp 1power/business-planning \
+	pub/tools pub/casters \
+	newlibertie/benchmarks newlibertie/db newlibertie/docs \
+                                  newlibertie/web 
 do 
 	if ! pushd $dir ; then
 		echo error at directory $dir - please fix
@@ -29,3 +26,6 @@ do
 done
 
 popd
+
+#  newlibertie/client  pub/authrep
+
