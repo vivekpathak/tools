@@ -3,7 +3,7 @@ pushd ~
 
 for dir in \
         1power/psychic-eureka \
-        1power/vigilant-lamp \
+        1power/front-end \
         1power/business-planning \
         pub/tools \
         pub/casters \
