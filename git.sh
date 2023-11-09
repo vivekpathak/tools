@@ -5,6 +5,7 @@ for dir in \
         1power/psychic-eureka \
         1power/front-end \
         1power/business-planning \
+        1power/engineering-design \
         pub/tools \
         pub/casters \
         notes
