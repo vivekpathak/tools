@@ -8,7 +8,8 @@ for dir in \
         1power/engineering-design \
         pub/tools \
         pub/casters \
-        notes
+        notes \
+	mmx/mmx-android mmx/mmx-server
 do 
 	if ! pushd $dir ; then
 		echo error at directory $dir - please fix
